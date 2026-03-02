@@ -26,7 +26,9 @@
   <title>TMPC: Test-Time Alignment via Textual MPC</title>
 
   <!-- Favicon (optional) -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/126187030?v=4" sizes="32x32" type="image/png">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/126187030?v=4" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/126187030?v=4" sizes="180x180">
 
   <!-- CSS (Academic Project Page Template) -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -274,8 +276,8 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              Test-Time Alignment for Large Language Models<br/>
-              via <span style="white-space:nowrap;">Textual Model Predictive Control</span>
+              Test-Time Alignment for Large Language Models
+              via Textual Model Predictive Control
             </h1>
 
             <div class="is-size-5 publication-authors tight">
@@ -382,9 +384,8 @@
               using a preference reward model to score short rollouts.
             </p>
             <img class="img-rounded" src="static/images/mpc_objective.png" alt="Model Predictive Control objective with moving horizon H" loading="lazy"/>
-            <p class="figure-caption">
-              Optimize locally over a moving horizon <i>H</i> instead of globally optimizing over the full length <i>T</i>;
-              execute the first step and re-plan.
+            <p class="figure-caption has-text-centered">
+              Optimize locally over a moving horizon <i>H</i> instead of globally optimizing over the full length <i>T</i>
             </p>
           </div>
         </div>
@@ -408,7 +409,7 @@
               This short-horizon re-planning reduces long-horizon brittleness while avoiding unstable whole-response rewrites.
             </p>
             <img class="img-rounded" src="static/images/tmpc_framework.png" alt="TMPC framework overview: rollout, reward, subgoals, re-generation" loading="lazy"/>
-            <p class="figure-caption"><b>Framework overview:</b> sample short-horizon rollouts, score with a reward model, distill high-quality intermediate segments into a subgoal buffer <i>B</i>, then regenerate the next segment conditioned on <i>B</i>.</p>
+            <p class="figure-caption has-text-centered"><b>Framework overview:</b> sample short-horizon rollouts, score with a reward model, distill high-quality intermediate segments into a subgoal buffer <i>B</i>, then regenerate the next segment conditioned on <i>B</i>.</p>
           </div>
         </div>
       </div>

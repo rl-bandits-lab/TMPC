@@ -3,476 +3,549 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="title" content="TMPC: Test-Time Alignment for Large Language Models via Textual Model Predictive Control">
+  <meta name="description" content="Textual Model Predictive Control (TMPC) aligns large language models at test time via short-horizon predictive planning with hindsight subgoals and subgoal-conditioned re-generation.">
+  <meta name="keywords" content="test-time alignment, large language models, model predictive control, planning, inference-time alignment">
+  <meta name="author" content="Kuang-Da Wang, Teng-Ruei Chen, Yu Heng Hung, Guo-Xun Ko, Shuoyang Ding, Yueh-Hua Wu, Yu-Chiang Frank Wang, Chao-Han Huck Yang, Wen-Chih Peng, Ping-Chun Hsieh">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
+  <meta property="og:site_name" content="TMPC Project Page">
+  <meta property="og:title" content="TMPC: Test-Time Alignment via Textual Model Predictive Control">
+  <meta property="og:description" content="Short-horizon predictive planning for inference-time alignment of LLMs via hindsight subgoals and subgoal-conditioned re-generation.">
+  <meta property="og:url" content="https://rl-bandits-lab.github.io/TMPC/">
+  <meta property="og:image" content="https://rl-bandits-lab.github.io/TMPC/static/images/teaser_concept.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta name="twitter:title" content="TMPC: Test-Time Alignment via Textual MPC">
+  <meta name="twitter:description" content="Short-horizon predictive planning for inference-time alignment of LLMs.">
+  <meta name="twitter:image" content="https://rl-bandits-lab.github.io/TMPC/static/images/teaser_concept.png">
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <title>TMPC: Test-Time Alignment via Textual MPC</title>
 
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
+  <!-- Favicon (optional) -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
+
+  <!-- CSS (Academic Project Page Template) -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
+
+  <!-- JS -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
+
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
+    "headline": "TMPC: Test-Time Alignment for Large Language Models via Textual Model Predictive Control",
+    "url": "https://rl-bandits-lab.github.io/TMPC/",
     "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
+    "author": [
+      {"@type": "Person", "name": "Kuang-Da Wang"},
+      {"@type": "Person", "name": "Teng-Ruei Chen"},
+      {"@type": "Person", "name": "Yu Heng Hung"},
+      {"@type": "Person", "name": "Guo-Xun Ko"},
+      {"@type": "Person", "name": "Shuoyang Ding"},
+      {"@type": "Person", "name": "Yueh-Hua Wu"},
+      {"@type": "Person", "name": "Yu-Chiang Frank Wang"},
+      {"@type": "Person", "name": "Chao-Han Huck Yang"},
+      {"@type": "Person", "name": "Wen-Chih Peng"},
+      {"@type": "Person", "name": "Ping-Chun Hsieh"}
     ]
   }
   </script>
+
+  <style>.publication-links.button { margin: 0.2rem 0.25rem; }.section-title-tight { margin-bottom: 0.85rem !important; }.figure-caption { margin-top: 0.65rem; color: #4a4a4a; }.pill {
+      display: inline-flex; align-items: center;
+      padding: 0.25rem 0.6rem; border-radius: 999px;
+      font-size: 0.9rem; font-weight: 700;
+      background: rgba(0,0,0,0.045);
+      margin: 0.15rem 0.25rem;
+    }.callout {
+      border-left: 4px solid rgba(0,0,0,0.14);
+      padding: 0.95rem 1.05rem;
+      background: rgba(0,0,0,0.025);
+      border-radius: 12px;
+    }.grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {.grid-2 { grid-template-columns: 1fr; } }.img-rounded { border-radius: 14px; box-shadow: 0 8px 22px rgba(0,0,0,0.085); }.soft-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 1.6rem 0; }.bibtex-header { display:flex; align-items:center; justify-content:space-between; gap: 1rem; }.copy-bibtex-btn {
+      border: 0; cursor: pointer; padding: 0.55rem 0.9rem;
+      border-radius: 999px; background: rgba(0,0,0,0.06);
+      font-weight: 800;
+    }.copy-bibtex-btn:hover { background: rgba(0,0,0,0.09); }
+    pre code { white-space: pre-wrap; }.tight { margin-top: 0.35rem !important; }
   
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+    /* Fixed-height alignment for the 3-up analysis row (top-tier project-page look) */
+    .tri-figs { align-items: stretch; }
+    .tri-fig-card { height: 100%; display: flex; flex-direction: column; }
+    .tri-fig-imgwrap { height: 260px; display: flex; align-items: center; justify-content: center; }
+    .tri-fig-imgwrap img { max-height: 260px; max-width: 100%; width: auto; height: auto; object-fit: contain; }
+    .tri-fig-caption { margin-top: 0.65rem; }
+
+  
+    /* Global figure alignment */
+    .img-rounded { display: block; margin-left: auto; margin-right: auto; }
+
+    /* Make equation/diagram figures feel less cramped */
+    .figure-caption { max-width: 980px; margin-left: auto; margin-right: auto; }
+
+    /* Enlarge key equation figures */
+    img[src*="mpc_objective.png"] { max-width: 760px; width: 100%; }
+    img[src*="trajectory_view_equation.png"] { max-width: 980px; width: 100%; }
+    img[src*="formula_hindsight_subgoal.png"],
+    img[src*="formula_subgoal_regen.png"] { max-width: 920px; width: 100%; }
+
+    /* Reduce excessive whitespace around equation cards */
+    .callout img { margin-top: 0.65rem; }
+
+  
+    /* Typography: avoid wide justified spacing; prefer a clean left rag */
+    .content.has-text-justified { text-align: left !important; }
+    .content p { line-height: 1.6; letter-spacing: normal; }
+    .content { font-size: 1.05rem; }
+    
+  
+    /* Style inspired by andrewliao11.github.io/LongPerceptualThoughts */
+    body { background: #f6f7f9; color: #243042; }
+    .hero { background: #f6f7f9; }
+    .hero.is-light { background: #f6f7f9; }
+    .title, .publication-title { color: #1f2937; }
+    .content { color: #243042; }
+    a { color: #2563eb; }
+    .external-link.button.is-dark { background: #111827; }
+    /* Subtle accent underline under section titles (similar feel) */
+    .section-title-tight::after, .publication-title::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 3px;
+      margin: 10px auto 0;
+      background: #ff4fa3;
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+
+  
+    /* Higher contrast: use near-black body text */
+    body, .content, .content p, .figure-caption { color: #111827 !important; }
+
+    /* Link color similar to LongPerceptualThoughts */
+    a { color: #2563eb; }
+    a:hover { color: #1d4ed8; }
+
+    /* Author styling: names in blue, affiliations in black */
+    .publication-authors .author-block { color: #2563eb; font-weight: 600; }
+    .publication-authors.affiliations .author-block { color: #111827; font-weight: 500; }
+
+    /* Slightly tighter paragraph look (no justified spacing) */
+    .content { text-align: left !important; font-size: 1.05rem; }
+    .content p { line-height: 1.55; margin-bottom: 0.9rem; }
+
+    /* Card spacing: reduce airy feel */
+    .callout { padding: 0.85rem 0.95rem; }
+    .soft-divider { margin: 1.2rem 0; }
+
+    /* Bigger formulas when stacked */
+    .big-formula { max-width: 920px; width: 100%; }
+
+    /* Small icons */
+    .sec-icon { margin-right: 0.45rem; opacity: 0.95; }
+
+  
+
+    /* ===== Professional theme tokens (refined from LongPerceptualThoughts) ===== */
+    :root{
+      --bg: #f6f7f9;
+      --text: #111827;
+      --muted: rgba(17,24,39,.68);
+      --link: #2563eb;
+      --linkHover: #1d4ed8;
+      --accent: #ff4fa3;
+      --card: rgba(255,255,255,.78);
+      --border: rgba(17,24,39,.10);
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadowSm: 0 8px 22px rgba(17,24,39,.10);
+    }
+
+    body{ background: var(--bg) !important; color: var(--text) !important; }
+    .hero, .hero.is-light{ background: var(--bg) !important; }
+    .title, .publication-title{ color: var(--text) !important; }
+    .content, .content p, .figure-caption{ color: var(--text) !important; }
+    .figure-caption{ color: var(--muted) !important; }
+
+    a{ color: var(--link) !important; }
+    a:hover{ color: var(--linkHover) !important; }
+
+    /* Buttons */
+    .external-link.button.is-dark{
+      background: #111827 !important;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 8px 18px rgba(17,24,39,.18);
+    }
+    .external-link.button.is-dark:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(17,24,39,.22);
+    }
+
+    /* Accent underline (keep it subtle and consistent) */
+    .section-title-tight::after, .publication-title::after{
+      background: var(--accent) !important;
+      opacity: .92;
+    }
+
+    /* Cards / callouts: glassy white, fine border, accent rail */
+    .callout{
+      background: var(--card) !important;
+      border: 1px solid var(--border) !important;
+      border-left: 4px solid rgba(255,79,163,.55) !important;
+      box-shadow: var(--shadow) !important;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Pills: cleaner and more "product" */
+    .pill{
+      background: rgba(255,255,255,.70) !important;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* Images */
+    .img-rounded{
+      box-shadow: var(--shadowSm) !important;
+      border: 1px solid rgba(17,24,39,.06);
+    }
+
+    /* Dividers */
+    .soft-divider{ background: var(--border) !important; }
+
+    /* Bibtex copy */
+    .copy-bibtex-btn{
+      background: rgba(255,255,255,.75) !important;
+      border: 1px solid var(--border);
+    }
+    .copy-bibtex-btn:hover{ background: rgba(255,255,255,.92) !important; }
+
+    /* Icons: consistent sizing + muted tone */
+    .sec-icon{ opacity: .95; }
+    .sec-icon i, .sec-icon svg{
+      font-size: .95em;
+      color: rgba(17,24,39,.72);
+    }
+
+    /* Author styling: names blue, affiliations muted */
+    .publication-authors .author-block{
+      color: var(--link) !important;
+      font-weight: 650;
+    }
+    .publication-authors.affiliations .author-block{
+      color: rgba(17,24,39,.82) !important;
+      font-weight: 520;
+    }
+
+</style>
 </head>
+
 <body>
+<main id="main-content">
 
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <main id="main-content">
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+            <h1 class="title is-1 publication-title">
+              Test-Time Alignment for Large Language Models<br/>
+              via <span style="white-space:nowrap;">Textual Model Predictive Control</span>
+            </h1>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+            <div class="is-size-5 publication-authors tight">
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+              <span class="author-block">Kuang-Da Wang<sup>1</sup>,</span>
+              <span class="author-block">Teng-Ruei Chen<sup>1</sup>,</span>
+              <span class="author-block">Yu Heng Hung<sup>1</sup>,</span>
+              <span class="author-block">Guo-Xun Ko<sup>1</sup>,</span>
+              <span class="author-block">Shuoyang Ding<sup>2</sup>,</span>
+              <span class="author-block">Yueh-Hua Wu<sup>2</sup>,</span>
+              <span class="author-block">Yu-Chiang Frank Wang<sup>2</sup>,</span>
+              <span class="author-block">Chao-Han Huck Yang<sup>2</sup>,</span>
+              <span class="author-block">Wen-Chih Peng<sup>1</sup>,</span>
+              <span class="author-block">Ping-Chun Hsieh<sup>1</sup></span>
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
+            </div>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
+
+            <div class="is-size-5 publication-authors affiliations" style="margin-top:0.35rem;">
+              <span class="author-block"><sup>1</sup>National Yang Ming Chiao Tung University &nbsp;&nbsp; <sup>2</sup>NVIDIA</span>
+            </div>
+
+
+            <div class="column has-text-centered" style="margin-top:0.95rem;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2502.20795" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>Paper</span>
                   </a>
                 </span>
 
-                <!-- TODO: Update with your arXiv paper ID -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
+                  <a href="https://github.com/rl-bandits-lab/TMPC" target="_blank" rel="noopener"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+</div>
+
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
       </div>
     </div>
   </section>
-<!--End paper poster -->
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-widescreen">
+      <div class="hero-body">
+        <img class="img-rounded" src="static/images/teaser_concept.png" alt="Concept teaser: curse of horizon vs curse of dimensionality" loading="lazy"/>
+        <p class="subtitle has-text-centered figure-caption">
+          Token-level preference control induces a long effective horizon (curse of horizon), while full-response rewriting searches an enormous action space (curse of dimensionality).
+          TMPC resolves this trade-off using short-horizon predictive planning with hindsight-discovered subgoals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-10-desktop is-11-widescreen">
+          <h2 class="title is-3 section-title-tight"><span class="sec-icon"><i data-lucide="file-text"></i></span> Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Preference alignment of large language models (LLMs) is often achieved through finetuning, which can be costly and slow to iterate.
+              We target <b>test-time alignment</b>—improving outputs at inference without updating model weights—by viewing text generation as a sequential decision-making problem.
+              We identify two complementary bottlenecks: token-level guided decoding struggles with a long decision horizon, while response-level rewriting suffers from a high-dimensional action space.
+              Inspired by <b>Model Predictive Control (MPC)</b>, we propose <b>Textual Model Predictive Control (TMPC)</b>, a predictive planning framework that repeatedly:
+              <b>(i)</b> samples short rollouts, <b>(ii)</b> evaluates them with a reward model, <b>(iii)</b> extracts reusable <b>hindsight subgoals</b> from high-reward segments, and
+              <b>(iv)</b> performs <b>subgoal-conditioned re-generation</b> to improve the next segment.
+              TMPC avoids hard, pre-defined text boundaries by enabling adaptive segmentation during generation.
+              Across discourse-level machine translation, long-form response generation, and program synthesis, TMPC improves both preference reward and downstream task performance.
+            </p>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="callout content has-text-justified">
+            <b>One sentence:</b> TMPC makes alignment a <b>short-horizon planning</b> problem, while using <b>hindsight subgoals</b> to keep progress consistent across iterations.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- MPC Objective -->
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-10-desktop is-11-widescreen">
+          <h2 class="title is-3 section-title-tight"><span class="sec-icon"><i data-lucide="compass"></i></span> From MPC to Textual MPC</h2>
+          <div class="content has-text-justified">
+            <p>
+              Model Predictive Control (MPC) solves long-horizon decision making by repeatedly optimizing over a <b>short moving horizon</b>.
+              At step <i>t</i>, MPC chooses the next action by approximately maximizing the cumulative reward over a horizon <i>H</i> (with <i>H</i> ≪ <i>T</i>),
+              executes the first action, then re-plans from the new state. TMPC transfers this principle to language generation by treating text as a trajectory and
+              using a preference reward model to score short rollouts.
+            </p>
+            <img class="img-rounded" src="static/images/mpc_objective.png" alt="Model Predictive Control objective with moving horizon H" loading="lazy"/>
+            <p class="figure-caption">
+              Optimize locally over a moving horizon <i>H</i> instead of globally optimizing over the full length <i>T</i>;
+              execute the first step and re-plan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Framework -->
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-10-desktop is-11-widescreen">
+          <h2 class="title is-3 section-title-tight"><span class="sec-icon"><i data-lucide="workflow"></i></span> TMPC Framework</h2>
+          <div class="content has-text-justified">
+            <p>
+              TMPC adapts Model Predictive Control (MPC) to language generation by repeatedly planning over a short horizon.
+              At iteration <i>t</i>, it (1) samples <i>K</i> candidate rollouts for the next segment from the current state (prompt + partial output),
+              (2) evaluates each rollout with a preference reward model <i>R</i>,
+              (3) retrospectively extracts high-reward intermediate segments as <b>subgoals</b> and stores them in a bounded buffer <i>B</i>, and
+              (4) regenerates the next segment by conditioning on buffered subgoals.
+              This short-horizon re-planning reduces long-horizon brittleness while avoiding unstable whole-response rewrites.
+            </p>
+            <img class="img-rounded" src="static/images/tmpc_framework.png" alt="TMPC framework overview: rollout, reward, subgoals, re-generation" loading="lazy"/>
+            <p class="figure-caption"><b>Framework overview:</b> sample short-horizon rollouts, score with a reward model, distill high-quality intermediate segments into a subgoal buffer <i>B</i>, then regenerate the next segment conditioned on <i>B</i>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  
+  <!-- Principles -->
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-10-desktop is-11-widescreen">
+          <h2 class="title is-3 section-title-tight"><span class="sec-icon"><i data-lucide="layers"></i></span> Two Core Components</h2>
+          <div class="content">
+            <p>
+              TMPC relies on two mechanisms expressed by the exact update rules below. We show them as equations to preserve
+              the method’s precise design and to make the page faithful to the paper.
+            </p>
+
+            <div class="callout">
+              <h3 class="title is-5" style="margin-bottom:0.55rem;">
+                <span class="sec-icon"><i data-lucide="inbox"></i></span> Hindsight subgoal identification
+              </h3>
+              <img class="img-rounded big-formula" src="static/images/formula_hindsight_subgoal.png"
+                   alt="Hindsight subgoal identification: buffer update equation" loading="lazy"/>
+              <p class="figure-caption">
+                <b>Buffer update.</b> After scoring rollouts, TMPC aggregates high-reward segments into the subgoal buffer <i>B</i>.
+                When <i>B</i> reaches capacity, lower-quality subgoals are replaced, keeping only the most useful waypoints.
+              </p>
+            </div>
+
+            <div style="height: 0.9rem;"></div>
+
+            <div class="callout">
+              <h3 class="title is-5" style="margin-bottom:0.55rem;">
+                <span class="sec-icon"><i data-lucide="sparkles"></i></span> Subgoal-conditioned re-generation
+              </h3>
+              <img class="img-rounded big-formula" src="static/images/formula_subgoal_regen.png"
+                   alt="Subgoal-conditioned re-generation: conditioning equation" loading="lazy"/>
+              <p class="figure-caption">
+                <b>Re-generation.</b> TMPC filters rollouts by a reward threshold and conditions the next segment on buffered subgoals in <i>B</i>,
+                guiding generation toward previously validated high-reward directions while keeping the planning horizon short.
+              </p>
+            </div>
+
+            <div class="soft-divider"></div>
+
+            <h3 class="title is-4" style="margin-bottom:0.75rem;"><span class="sec-icon"><i data-lucide="list-check"></i></span> Algorithm</h3>
+            <p>
+              The full procedure alternates between rollout sampling, reward evaluation, hindsight subgoal buffering, and subgoal-conditioned re-generation until termination.
+            </p>
+            <img class="img-rounded" src="static/images/algorithm1.png" alt="Algorithm 1: TMPC" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
 
 
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-10-desktop is-11-widescreen">
+          <h2 class="title is-3 section-title-tight"><span class="sec-icon"><i data-lucide="bar-chart-3"></i></span> Experiments & Results</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-multiline">
 
-<!--BibTex citation -->
+              <div class="column is-12">
+                <div class="callout">
+                  <h3 class="title is-5" style="margin-bottom:0.6rem;">Discourse-level Machine Translation (WMT’24 Literary Translation)</h3>
+                  <p>
+                    TMPC improves translation quality under document-level constraints by re-planning with short rollouts and reusing hindsight subgoals that correspond to meaningful context units.
+                  </p>
+                  <img class="img-rounded" src="static/images/results_wmt24_table.png" alt="WMT'24 translation results table" loading="lazy"/>
+                  <p class="figure-caption">Discourse-level translation: improvements under long-context constraints (e.g., document-level coherence and style).</p>
+                </div>
+              </div>
+
+
+              <div class="column is-12">
+                <div class="callout">
+                  <h3 class="title is-5" style="margin-bottom:0.6rem;">Long-form Response Generation (HH-RLHF)</h3>
+                  <p>
+                    We evaluate long-form instruction-following with a learned preference reward model. TMPC consistently increases the reward-model score,
+                    indicating improved alignment at inference time without updating model weights.
+                  </p>
+                  <img class="img-rounded" src="static/images/results_hhrlhf.png" alt="HH-RLHF: reward model score results" loading="lazy"/>
+                  <p class="figure-caption">Higher reward-model scores indicate stronger alignment to the learned preference signal for long-form responses.</p>
+                </div>
+              </div>
+
+<div class="column is-12">
+                <div class="callout">
+                  <h3 class="title is-5" style="margin-bottom:0.6rem;">Deeper Analysis: Evaluation Signal, Hard-to-Segment Codegen, and Iterative Dynamics</h3>
+                  <p>
+                    Beyond aggregate benchmarks, we examine three complementary views of test-time alignment.
+                    <b>(Left)</b> On HH-RLHF, GPT-4 pairwise judgments provide a strong, task-agnostic signal for preference alignment, revealing how often TMPC produces outputs preferred by an external evaluator.
+                    <b>(Middle)</b> For code generation—where high-quality intermediate boundaries are often ambiguous—TMPC’s hindsight subgoals provide adaptive anchors that improve success without relying on fixed segmentation.
+                    <b>(Right)</b> In iterative translation, TMPC maintains steady gains across iterations compared with conventional iterative refinement, reflecting more stable progress when planning is kept short-horizon.
+                  </p>
+
+                  <div class="columns is-variable is-3 tri-figs" style="margin-top:0.45rem;">
+                    <div class="column">
+                      <div class="tri-fig-card">
+                      <div class="tri-fig-imgwrap">
+                        <img class="img-rounded" src="static/images/hhrlhf_gpt4_winrate.png" alt="HH-RLHF: GPT-4 evaluation win rate" loading="lazy"/>
+                      </div>
+                      <p class="figure-caption tri-fig-caption"><b>HH-RLHF (GPT-4).</b> GPT-4 pairwise win rates: an external evaluator’s preference between TMPC and baselines, complementing reward-model-based evaluation.</p>
+                                          </div>
+                    </div>
+
+                    <div class="column">
+                      <div class="tri-fig-card">
+                      <div class="tri-fig-imgwrap">
+                        <img class="img-rounded" src="static/images/codegen_passrate.png" alt="Code generation: pass rate across methods" loading="lazy"/>
+                      </div>
+                      <p class="figure-caption tri-fig-caption"><b>Code generation.</b> Code generation pass rates: when intermediate “boundaries” (what to fix next) are unclear, hindsight subgoals provide adaptive anchors for planning.</p>
+                                          </div>
+                    </div>
+
+                    <div class="column">
+                      <div class="tri-fig-card">
+                      <div class="tri-fig-imgwrap">
+                        <img class="img-rounded" src="static/images/translation_iterations.png" alt="Translation: performance across iterations" loading="lazy"/>
+                      </div>
+                      <p class="figure-caption tri-fig-caption"><b>Iteration dynamics.</b> Iteration-by-iteration trajectory: TMPC maintains steady improvements across iterations compared with conventional iterative refinement.</p>
+                                          </div>
+                    </div>
+                  </div>
+                </div>
+
+  <!-- BibTeX -->
   <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
+    <div class="container is-max-widescreen content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
         <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
@@ -480,41 +553,54 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+
+      <pre id="bibtex-code"><code>@inproceedings{
+wang2026testtime,
+title={Test-Time Alignment for Large Language Models via Textual Model Predictive Control},
+author={Kuang-Da Wang and Teng-Ruei Chen and Yu Heng Hung and Guo-Xun Ko and Shuoyang Ding and Yueh-Hua Wu and Yu-Chiang Frank Wang and Chao-Han Huck Yang and Wen-Chih Peng and Ping-Chun Hsieh},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=DsS3xRPSs5}
 }</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
-
+  </section>
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Page template adapted from the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.
+              <br/>
+              Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+</main>
 
-    <!-- End of Statcounter Code -->
+<script>
+  function copyBibTeX() {
+    const el = document.getElementById('bibtex-code');
+    if (!el) return;
+    const text = el.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-bibtex-btn.copy-text');
+      if (btn) {
+        const prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => (btn.textContent = prev), 1200);
+      }
+    });
+  }
+</script>
 
-  </body>
-  </html>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>if (window.lucide) { window.lucide.createIcons(); }</script>
+</body>
+</html>
